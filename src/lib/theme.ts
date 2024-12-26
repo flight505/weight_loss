@@ -1,3 +1,7 @@
+type DeepStringRecord = {
+  [key: string]: string | DeepStringRecord;
+};
+
 export const theme = {
   colors: {
     // Main colors
@@ -100,17 +104,19 @@ export type Theme = typeof theme;
 // Utility function to get nested color values
 export function getColor(path: string): string {
   const keys = path.split('.');
-  let result: unknown = theme.colors;
+  let result = theme.colors as DeepStringRecord;
   
   for (const key of keys) {
     if (result && typeof result === 'object' && key in result) {
-      result = (result as Record<string, unknown>)[key];
+      const value = result[key];
+      if (typeof value === 'string') return value;
+      result = value as DeepStringRecord;
     } else {
       return path;
     }
   }
   
-  return typeof result === 'string' ? result : path;
+  return path;
 }
 
 // Common style combinations

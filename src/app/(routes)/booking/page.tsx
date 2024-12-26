@@ -1,193 +1,106 @@
-'use client';
-
-import { useState } from 'react';
+import { styles } from '@/lib/theme';
 
 export default function BookingPage() {
-  const [height, setHeight] = useState('');
-  const [weight, setWeight] = useState('');
-  const [bmi, setBmi] = useState<number | null>(null);
-  const [bmiMessage, setBmiMessage] = useState('');
-
-  const calculateBMI = () => {
-    if (height && weight) {
-      const heightInMeters = parseInt(height) / 100;
-      const weightInKg = parseInt(weight);
-      const calculatedBMI = weightInKg / (heightInMeters * heightInMeters);
-      setBmi(Math.round(calculatedBMI * 10) / 10);
-
-      // Set message based on BMI
-      if (calculatedBMI < 25) {
-        setBmiMessage('Du er normalvægtig og ikke egnet til medicinsk vægttab');
-      } else if (calculatedBMI >= 25 && calculatedBMI < 30) {
-        setBmiMessage('Du er lettere overvægtig. Kontakt os for at vurdere din egnethed til behandling.');
-      } else {
-        setBmiMessage('Du er egnet til medicinsk vægttab. Book en konsultation for at komme i gang.');
-      }
-    }
-  };
-
   return (
     <div className="relative">
-      {/* Hero Section */}
-      <section className="relative py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Book konsultation
+      {/* Hero Section with Multi-tone Gradient */}
+      <section className="relative py-32 overflow-hidden">
+        <div className="absolute inset-0" style={{ background: styles.gradients.multiTone }}></div>
+        <div className="absolute inset-0 bg-white/30 backdrop-blur-sm"></div>
+        <div className={`${styles.containers.narrow} relative`}>
+          <div className="text-center">
+            <h1 className="text-5xl md:text-6xl font-bold text-neutral-gray-800 mb-6">
+              Book Konsultation
             </h1>
-            <p className="text-xl text-gray-600 mb-8">
-              Start din rejse mod et sundere liv med Dr. Peyman Pedrampour
+            <p className="text-xl md:text-2xl text-neutral-gray-600 mb-8">
+              Tag det første skridt mod dit vægttabsmål
             </p>
           </div>
         </div>
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent"></div>
       </section>
 
-      {/* BMI Calculator Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-              Beregn dit BMI
-            </h2>
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="space-y-4">
+      {/* BMI Calculator and Booking Form */}
+      <section className="py-32 relative">
+        <div className={styles.containers.default}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+            {/* BMI Calculator */}
+            <div className={`${styles.cards.glass} p-8`}>
+              <h2 className="text-2xl font-semibold text-neutral-gray-800 mb-6">
+                Beregn dit BMI
+              </h2>
+              <div className="space-y-6">
                 <div>
-                  <label htmlFor="height" className="block text-sm font-medium text-gray-700 mb-1">
-                    Højde (cm)
-                  </label>
+                  <label className="block text-neutral-gray-600 mb-2">Højde (cm)</label>
                   <input
                     type="number"
-                    id="height"
-                    value={height}
-                    onChange={(e) => setHeight(e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full px-4 py-2 rounded-lg border border-accent-rose-light focus:border-accent-rose-main focus:outline-none"
                     placeholder="F.eks. 170"
                   />
                 </div>
                 <div>
-                  <label htmlFor="weight" className="block text-sm font-medium text-gray-700 mb-1">
-                    Vægt (kg)
-                  </label>
+                  <label className="block text-neutral-gray-600 mb-2">Vægt (kg)</label>
                   <input
                     type="number"
-                    id="weight"
-                    value={weight}
-                    onChange={(e) => setWeight(e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="F.eks. 70"
+                    className="w-full px-4 py-2 rounded-lg border border-accent-rose-light focus:border-accent-rose-main focus:outline-none"
+                    placeholder="F.eks. 80"
                   />
                 </div>
                 <button
-                  onClick={calculateBMI}
-                  className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
+                  className={`${styles.buttons.primary} w-full py-3`}
                 >
                   Beregn BMI
                 </button>
-                {bmi && (
-                  <div className="mt-4 p-4 bg-gray-50 rounded-md">
-                    <p className="text-lg font-semibold mb-2">Dit BMI er: {bmi}</p>
-                    <p className="text-gray-600">{bmiMessage}</p>
-                  </div>
-                )}
+                <div className="text-center text-neutral-gray-600">
+                  Dit BMI: <span className="font-semibold">--</span>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Booking Form Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-              Book din første konsultation
-            </h2>
-            <form className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                  Fulde navn
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                  Telefon
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                  Besked (valgfrit)
-                </label>
-                <textarea
-                  id="message"
-                  rows={4}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                ></textarea>
-              </div>
-              <div className="pt-4">
+            {/* Booking Form */}
+            <div className={`${styles.cards.glass} p-8`}>
+              <h2 className="text-2xl font-semibold text-neutral-gray-800 mb-6">
+                Book din første konsultation
+              </h2>
+              <form className="space-y-6">
+                <div>
+                  <label className="block text-neutral-gray-600 mb-2">Navn</label>
+                  <input
+                    type="text"
+                    className="w-full px-4 py-2 rounded-lg border border-accent-rose-light focus:border-accent-rose-main focus:outline-none"
+                    placeholder="Dit fulde navn"
+                  />
+                </div>
+                <div>
+                  <label className="block text-neutral-gray-600 mb-2">Email</label>
+                  <input
+                    type="email"
+                    className="w-full px-4 py-2 rounded-lg border border-accent-rose-light focus:border-accent-rose-main focus:outline-none"
+                    placeholder="din@email.dk"
+                  />
+                </div>
+                <div>
+                  <label className="block text-neutral-gray-600 mb-2">Telefon</label>
+                  <input
+                    type="tel"
+                    className="w-full px-4 py-2 rounded-lg border border-accent-rose-light focus:border-accent-rose-main focus:outline-none"
+                    placeholder="+45 12 34 56 78"
+                  />
+                </div>
+                <div>
+                  <label className="block text-neutral-gray-600 mb-2">Besked (valgfrit)</label>
+                  <textarea
+                    className="w-full px-4 py-2 rounded-lg border border-accent-rose-light focus:border-accent-rose-main focus:outline-none h-32"
+                    placeholder="Fortæl os gerne lidt om dine mål og eventuelle spørgsmål"
+                  ></textarea>
+                </div>
                 <button
                   type="submit"
-                  className="w-full bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 transition-colors"
+                  className={`${styles.buttons.primary} w-full py-3`}
                 >
                   Send booking forespørgsel
                 </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </section>
-
-      {/* Additional Information */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-              Praktisk information
-            </h2>
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="space-y-4">
-                <div>
-                  <h3 className="text-lg font-semibold mb-2">Konsultation</h3>
-                  <p className="text-gray-600">
-                    Din første konsultation varer ca. 30 minutter. Her gennemgår vi din sundhedstilstand,
-                    diskuterer dine mål og lægger en behandlingsplan.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold mb-2">Forberedelse</h3>
-                  <p className="text-gray-600">
-                    Medbring gerne en liste over eventuel medicin du tager, samt relevante helbredsoplysninger.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold mb-2">Betaling</h3>
-                  <p className="text-gray-600">
-                    Vi accepterer alle almindelige betalingskort. Prisen for første konsultation er 800 kr.
-                  </p>
-                </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>
