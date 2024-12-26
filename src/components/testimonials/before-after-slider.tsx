@@ -130,7 +130,7 @@ export default function BeforeAfterSlider() {
             </div>
 
             <p className="text-neutral-gray-600 text-lg leading-relaxed italic">
-              "{testimonials[currentSlide].story}"
+              &ldquo;{testimonials[currentSlide].story}&rdquo;
             </p>
 
             {/* Navigation Buttons */}

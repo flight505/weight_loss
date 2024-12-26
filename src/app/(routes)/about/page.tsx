@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { styles } from '@/lib/theme';
 
 export default function AboutPage() {
@@ -128,9 +127,9 @@ export default function AboutPage() {
           </h2>
           <div className={`${styles.cards.glass} p-12 ${styles.decorative.glowHover}`}>
             <p className="text-neutral-gray-600 italic mb-10 leading-relaxed text-xl">
-              "Dr. Peyman og hans team har givet mig den støtte og vejledning, jeg havde brug for til at
+              &ldquo;Dr. Peyman og hans team har givet mig den støtte og vejledning, jeg havde brug for til at
               opnå mit vægttabsmål. Deres professionelle tilgang og konstante opbakning har gjort hele
-              forskellen i min rejse mod et sundere liv."
+              forskellen i min rejse mod et sundere liv.&rdquo;
             </p>
             <div className="flex items-center justify-center space-x-6">
               <div className="w-20 h-20 bg-accent-rose-light rounded-full flex items-center justify-center shadow-glow">
