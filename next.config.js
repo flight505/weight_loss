@@ -2,9 +2,7 @@
 const nextConfig = {
   output: 'standalone',
   reactStrictMode: true,
-  experimental: {
-    optimizeCss: true
-  }
+  experimental: {}
 }
 
 module.exports = nextConfig 
