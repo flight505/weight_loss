@@ -7,10 +7,24 @@
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
   }
-}
 
-@layer base {
+  html {
+    @apply antialiased;
+  }
+
   body {
     @apply bg-white text-neutral-gray-800;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
   }
 }

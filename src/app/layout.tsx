@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/navbar";
@@ -7,7 +7,14 @@ import { Footer } from "@/components/layout/footer";
 const inter = Inter({
   subsets: ["latin"],
   display: 'swap',
+  preload: true,
+  fallback: ['system-ui', 'sans-serif'],
 });
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   title: "SlankLet.dk - Medicinsk Vægttab med Dr. Peyman Pedrampour",
@@ -20,6 +27,7 @@ export const metadata: Metadata = {
     locale: "da_DK",
     type: "website",
   },
+  robots: "index, follow",
 };
 
 export default function RootLayout({
@@ -29,7 +37,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="da" suppressHydrationWarning>
-      <body className={inter.className}>
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
+      <body className={`${inter.className} antialiased`}>
         <Navbar />
         <main className="min-h-screen bg-neutral-white">
           {children}
