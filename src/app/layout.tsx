@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Navbar } from "@/components/layout/navbar";
-import { Footer } from "@/components/layout/footer";
 import "./globals.css";
+import Navbar from "@/components/layout/navbar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -23,11 +22,17 @@ export default function RootLayout({
   return (
     <html lang="da">
       <body className={`${inter.variable} font-sans antialiased bg-white`}>
-        <Navbar />
-        <main className="min-h-screen pt-16">
-          {children}
-        </main>
-        <Footer />
+        <div className="flex flex-col min-h-screen">
+          <Navbar />
+          <main className="flex-grow">
+            {children}
+          </main>
+          <footer className="bg-white border-t border-accent-rose-light py-8">
+            <div className="container mx-auto px-4 text-center text-neutral-gray-600">
+              <p>© 2024 SlankLet.dk - Alle rettigheder forbeholdes</p>
+            </div>
+          </footer>
+        </div>
       </body>
     </html>
   );

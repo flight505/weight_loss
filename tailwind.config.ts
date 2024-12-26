@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
+import { theme as customTheme } from "./src/lib/theme";
 
-export default {
+const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,10 +10,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        primary: customTheme.colors.primary,
+        secondary: customTheme.colors.secondary,
+        neutral: customTheme.colors.neutral,
       },
+      spacing: customTheme.spacing,
+      borderRadius: customTheme.borderRadius,
+      boxShadow: customTheme.shadows,
     },
   },
   plugins: [],
-} satisfies Config;
+};
+
+export default config;
