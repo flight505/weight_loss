@@ -30,7 +30,8 @@ export default function ContactPage() {
       if (result.success) {
         (event.target as HTMLFormElement).reset();
       }
-    } catch (error) {
+    } catch (err) {
+      console.error('Error submitting form:', err);
       setSubmitStatus({
         success: false,
         message: 'Der opstod en fejl. Prøv venligst igen senere.'
