@@ -97,8 +97,6 @@ export const theme = {
 
 export type Theme = typeof theme;
 
-type ThemeColors = typeof theme.colors;
-
 // Utility function to get nested color values
 export function getColor(path: string): string {
   const keys = path.split('.');
