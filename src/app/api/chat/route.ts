@@ -8,6 +8,13 @@ const openai = new OpenAI({
 // Set the runtime to edge
 export const runtime = 'edge';
 
+interface StreamMessage {
+  id: string;
+  role: 'assistant';
+  content: string;
+  createdAt: Date;
+}
+
 const systemPrompt = `You are a helpful weight loss clinic assistant. You help users with questions about:
 - Weight loss programs
 - Medications like Wegovy
@@ -57,7 +64,7 @@ export async function POST(req: Request) {
     const encoder = new TextEncoder();
     const stream = new ReadableStream({
       async start(controller) {
-        const push = (chunk: any) => {
+        const push = (chunk: StreamMessage | '[DONE]') => {
           controller.enqueue(encoder.encode(`data: ${JSON.stringify(chunk)}\n\n`));
         };
 
