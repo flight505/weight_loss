@@ -4082,11 +4082,6 @@ onetime@^6.0.0:
   dependencies:
     mimic-fn "^4.0.0"
 
-openai-edge@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/openai-edge/-/openai-edge-1.2.2.tgz#0b1cd5aec2c366bbd25cdeba05399aa6eef73230"
-  integrity sha512-C3/Ao9Hkx5uBPv9YFBpX/x59XMPgPUU4dyGg/0J2sOJ7O9D98kD+lfdOc7v/60oYo5xzMGct80uFkYLH+X2qgw==
-
 openai@^4.77.0:
   version "4.77.0"
   resolved "https://registry.yarnpkg.com/openai/-/openai-4.77.0.tgz#228f2d43ffa79ae9d8b5d4155e965da82e5ac330"
@@ -5365,11 +5360,6 @@ v8-compile-cache-lib@^3.0.1:
   version "3.0.1"
   resolved "https://registry.npmjs.org/v8-compile-cache-lib/-/v8-compile-cache-lib-3.0.1.tgz"
   integrity sha512-wa7YjyUGfNZngI/vtK0UHAN+lgDCxBPCylVXGp0zu59Fz5aiGtNXaq3DhIov063MorB+VfufLh3JlF2KdTK3xg==
-
-vercel-ai@^0.0.0:
-  version "0.0.0"
-  resolved "https://registry.npmjs.org/vercel-ai/-/vercel-ai-0.0.0.tgz"
-  integrity sha512-ajz9CyVRybwMlwZl2D8YP0qEurXK8sJSZsFyqfbcZ1Of2hlbvm6dCZ1m+FV8eaBgbQDnMY3IWEP5AMEXhV7SQA==
 
 vercel@^39.2.2:
   version "39.2.2"

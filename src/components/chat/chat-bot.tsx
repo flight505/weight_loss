@@ -13,15 +13,25 @@ import { cn } from '@/lib/utils';
 
 export function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
-  const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
+  const { messages, input, handleInputChange, handleSubmit, isLoading, error } = useChat({
     api: '/api/chat',
+    initialMessages: [
+      {
+        id: 'welcome',
+        role: 'assistant',
+        content: 'Hello! I\'m here to help you with your weight loss journey. Feel free to ask me about our programs, medications like Wegovy, or booking an appointment.'
+      }
+    ],
+    onError: (error) => {
+      console.error('Chat error:', error);
+    }
   });
 
   const handleContactSupport = (type: 'phone' | 'email') => {
     if (type === 'phone') {
-      window.location.href = 'tel:+4512345678'; // Replace with actual phone number
+      window.location.href = 'tel:+4526179868';
     } else {
-      window.location.href = 'mailto:support@example.com'; // Replace with actual email
+      window.location.href = 'mailto:jesper_vang@me.com';
     }
   };
 
@@ -60,7 +70,7 @@ export function ChatBot() {
           
           <CardContent className="flex-grow p-4 overflow-hidden">
             <ScrollArea className="h-full pr-4">
-              {messages.length === 0 ? (
+              {messages.length === 1 ? (
                 <div className="flex flex-col items-center justify-center h-full text-center space-y-4">
                   <MessageCircle className="h-12 w-12 text-muted-foreground" />
                   <div className="space-y-2">
@@ -96,6 +106,13 @@ export function ChatBot() {
                     <div className="flex justify-start">
                       <div className="bg-muted rounded-lg px-4 py-2 animate-pulse">
                         Typing...
+                      </div>
+                    </div>
+                  )}
+                  {error && (
+                    <div className="flex justify-center">
+                      <div className="bg-destructive/10 text-destructive rounded-lg px-4 py-2">
+                        Error: {error.message}
                       </div>
                     </div>
                   )}

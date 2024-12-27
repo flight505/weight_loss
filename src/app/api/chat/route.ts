@@ -10,7 +10,14 @@ export const runtime = 'edge';
 
 export async function POST(req: Request) {
   try {
+    // Parse the request body
     const { messages } = await req.json();
+
+    if (!messages || !Array.isArray(messages)) {
+      throw new Error('Invalid messages format');
+    }
+
+    console.log('Processing chat request with messages:', messages);
 
     // Ask OpenAI for a streaming chat completion
     const response = await openai.chat.completions.create({
@@ -36,29 +43,38 @@ The clinic offers:
 - Regular follow-ups
 - Community support
 
+Contact information:
+- Phone: +45 26179868
+- Email: jesper_vang@me.com
+
 Membership costs 299,- DKK every 4 weeks with no binding period.`,
         },
         ...messages,
       ],
     });
 
-    // Create a streaming response
+    // Transform the response into a ReadableStream
+    const encoder = new TextEncoder();
+    const decoder = new TextDecoder();
+    
     const stream = new ReadableStream({
       async start(controller) {
+        const push = (chunk: string) => {
+          controller.enqueue(encoder.encode(chunk));
+        };
+
         for await (const chunk of response) {
           const content = chunk.choices[0]?.delta?.content;
           if (content) {
-            controller.enqueue(
-              new TextEncoder().encode(`data: ${JSON.stringify({ content })}\n\n`)
-            );
+            push(`data: ${JSON.stringify({ role: "assistant", content })}\n\n`);
           }
         }
-        controller.enqueue(new TextEncoder().encode('data: [DONE]\n\n'));
+        
+        push('data: [DONE]\n\n');
         controller.close();
       },
     });
 
-    // Return the response as a streaming response
     return new Response(stream, {
       headers: {
         'Content-Type': 'text/event-stream',
