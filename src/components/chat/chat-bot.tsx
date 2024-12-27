@@ -56,6 +56,10 @@ export function ChatBot() {
     }
   };
 
+  const handleClose = () => {
+    setIsOpen(false);
+  };
+
   return (
     <>
       {!isOpen && (
@@ -82,8 +86,9 @@ export function ChatBot() {
             <Button
               variant="ghost"
               size="icon"
-              className="ml-auto rounded-full"
-              onClick={() => setIsOpen(false)}
+              className="ml-auto rounded-full hover:bg-accent-rose-light"
+              onClick={handleClose}
+              aria-label="Close chat"
             >
               <X className="h-5 w-5" />
             </Button>
