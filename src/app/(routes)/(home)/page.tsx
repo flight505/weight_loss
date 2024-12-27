@@ -89,7 +89,7 @@ export default function HomePage() {
               {/* Price Tag */}
               <div className="absolute top-6 right-6 md:top-8 md:right-8 bg-accent-rose-dark text-white rounded-full p-6 text-center transform rotate-6 shadow-lg">
                 <p className="text-base font-medium">Medlemskab</p>
-                <p className="text-2xl font-bold">kun 299,-</p>
+                <p className="text-2xl font-bold">kun 249,-</p>
                 <p className="text-sm">hver 4. uge</p>
                 <p className="text-xs font-light">- ingen binding -</p>
               </div>
@@ -128,6 +128,75 @@ export default function HomePage() {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Getting Started Steps Section */}
+      <section className="py-32 relative bg-neutral-50">
+        <div className={styles.containers.default}>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-neutral-gray-800 mb-4">
+              Sådan kommer du i gang
+            </h2>
+            <p className="text-xl text-neutral-gray-600 max-w-2xl mx-auto">
+              Til video-forundersøgelsen
+            </p>
+            <p className="text-lg text-neutral-gray-600 max-w-3xl mx-auto mt-4">
+              Hvis du ligger i den lave ende af BMI-grænsen, kan vi bede dig om at vise dig i tætsiddende tøj.
+              Eventuelt skal du kunne trække op i tøjet og fremvise maven, veje dig og måle taljen under konsultationen.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-16">
+            {[
+              {
+                icon: "badge",
+                title: "1. Tegn et medlemskab",
+                description: "Vi mailer dig et oprettelseslink til Patientportalen."
+              },
+              {
+                icon: "medical_services",
+                title: "2. Book en tid",
+                description: "Du får spørgeskema og velkomstmail. Vi gennemgår mål, kost, livsstil, mv. via video."
+              },
+              {
+                icon: "medication",
+                title: "3. Du får udskrevet en recept",
+                description: "på vægttabsmedicin."
+              },
+              {
+                icon: "forum",
+                title: "4. Dit online vægttabsforløb starter",
+                description: "Du har ubegrænset adgang til os."
+              }
+            ].map((step, index) => (
+              <div 
+                key={index}
+                className="flex flex-col items-center text-center group"
+              >
+                <div className="w-24 h-24 rounded-full bg-accent-rose-light flex items-center justify-center mb-6 group-hover:bg-accent-rose-main transition-colors duration-300">
+                  <span className="material-symbols-outlined text-4xl text-white">
+                    {step.icon}
+                  </span>
+                </div>
+                <h3 className="text-xl font-semibold text-neutral-gray-800 mb-3">
+                  {step.title}
+                </h3>
+                <p className="text-neutral-gray-600">
+                  {step.description}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-16 text-center">
+            <Link
+              href="/booking"
+              className={`${styles.buttons.primary} px-8 py-4 text-lg inline-block hover:scale-105 transition-transform`}
+            >
+              Kom i gang nu
+            </Link>
           </div>
         </div>
       </section>
