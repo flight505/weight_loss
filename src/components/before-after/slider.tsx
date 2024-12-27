@@ -18,38 +18,38 @@ const testimonials: Testimonial[] = [
   {
     id: 1,
     name: 'Maria Hansen',
-    age: 34,
+    age: 36,
     weightLoss: 25,
     duration: '6 måneder',
     story: 'Efter at have kæmpet med min vægt i årevis, fandt jeg endelig den rigtige støtte og vejledning. Nu føler jeg mig sundere og mere energisk end nogensinde.',
-    imagePath: '/images/before and after 1.png'
+    imagePath: '/images/weight_loss_girls_1@2x.png'
   },
   {
     id: 2,
     name: 'Louise Nielsen',
-    age: 42,
+    age: 25,
     weightLoss: 18,
     duration: '4 måneder',
     story: 'Det har været en fantastisk rejse. Ikke kun har jeg tabt mig, men jeg har også lært at opretholde en sundere livsstil.',
-    imagePath: '/images/before and after 2.png'
+    imagePath: '/images/weight_loss_girls_2@2x.png'
   },
   {
     id: 3,
     name: 'Sofia Andersen',
-    age: 29,
+    age: 31,
     weightLoss: 15,
     duration: '3 måneder',
     story: 'Programmet har ændret mit forhold til mad og motion. Jeg er så taknemmelig for den personlige vejledning og støtte.',
-    imagePath: '/images/before and after 3.png'
+    imagePath: '/images/weight_loss_girls_3@2x.png'
   },
   {
     id: 4,
     name: 'Emma Pedersen',
-    age: 38,
+    age: 33,
     weightLoss: 22,
     duration: '5 måneder',
     story: 'Jeg havde aldrig troet, at jeg kunne nå mine mål, men med den rette vejledning og motivation lykkedes det. Nu føler jeg mig som et nyt menneske.',
-    imagePath: '/images/before and after 4.png'
+    imagePath: '/images/weight_loss_girls_4@2x.png'
   }
 ];
 
@@ -103,7 +103,7 @@ export default function BeforeAfterSlider() {
     >
       {/* Main Slider */}
       <div className={`${styles.cards.glass} overflow-hidden rounded-2xl`}>
-        <div className="relative aspect-[16/7]">
+        <div className="relative aspect-[2/1]">
           <div
             className={`absolute w-full h-full transition-transform duration-500 ease-in-out ${
               isTransitioning ? 'opacity-50' : 'opacity-100'
@@ -120,8 +120,10 @@ export default function BeforeAfterSlider() {
                   src={testimonial.imagePath}
                   alt={`Før og efter billede af ${testimonial.name}`}
                   fill
-                  className="object-cover object-top"
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1100px"
                   priority={index === 0}
+                  quality={90}
                 />
               </div>
             ))}
