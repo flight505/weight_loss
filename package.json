@@ -29,6 +29,7 @@
     "react-hook-form": "^7.54.2",
     "tailwind-merge": "^2.6.0",
     "vercel": "^39.2.2",
+    "vercel-ai": "^0.0.0",
     "zod": "^3.24.1"
   },
   "devDependencies": {

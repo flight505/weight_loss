@@ -1,11 +1,11 @@
-import { StreamingTextResponse } from 'ai';
-import { OpenAIStream } from 'ai/streams';
-import OpenAI from 'openai';
+import { Configuration, OpenAIApi } from 'openai-edge';
 
-// Create an OpenAI API client
-const openai = new OpenAI({
+// Create an OpenAI API client (that's edge friendly!)
+const config = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
+
+const openai = new OpenAIApi(config);
 
 // IMPORTANT! Set the runtime to edge
 export const runtime = 'edge';
@@ -20,7 +20,7 @@ export async function POST(req: Request) {
   const { messages }: { messages: Message[] } = await req.json();
 
   // Ask OpenAI for a streaming chat completion given the prompt
-  const response = await openai.chat.completions.create({
+  const response = await openai.createChatCompletion({
     model: 'gpt-4',
     stream: true,
     messages: [
@@ -48,9 +48,12 @@ Membership costs 299,- DKK every 4 weeks with no binding period.`,
     ],
   });
 
-  // Convert the response into a friendly text-stream
-  const stream = OpenAIStream(response);
-
-  // Respond with the stream
-  return new StreamingTextResponse(stream);
+  // Return the response as a streaming response
+  return new Response(response.body, {
+    headers: {
+      'Content-Type': 'text/event-stream',
+      'Cache-Control': 'no-cache',
+      'Connection': 'keep-alive',
+    },
+  });
 } 
