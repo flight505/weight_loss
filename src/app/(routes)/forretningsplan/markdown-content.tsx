@@ -1,9 +1,8 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import mermaid from 'mermaid';
 import { styles } from '@/lib/theme';
 
 interface MarkdownContentProps {
@@ -11,19 +10,47 @@ interface MarkdownContentProps {
 }
 
 export function MarkdownContent({ content }: MarkdownContentProps) {
+  const [mermaidLoaded, setMermaidLoaded] = useState(false);
   const mermaidRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      mermaid.initialize({
-        startOnLoad: true,
-        theme: 'neutral',
-        securityLevel: 'loose',
-        fontFamily: 'arial',
-        fontSize: 16,
+    if (typeof window !== 'undefined' && !mermaidLoaded) {
+      import('mermaid').then((mermaid) => {
+        mermaid.default.initialize({
+          startOnLoad: true,
+          theme: 'neutral',
+          securityLevel: 'loose',
+          fontFamily: 'arial',
+          fontSize: 16,
+          pie: {
+            useWidth: 500,
+          },
+          gantt: {
+            useWidth: 800,
+            fontSize: 14,
+            topPadding: 40,
+            leftPadding: 75,
+            rightPadding: 20,
+            gridLineStartPadding: 35,
+          },
+        });
+        setMermaidLoaded(true);
+        
+        // Find all mermaid diagrams and render them
+        const diagrams = document.querySelectorAll('.mermaid');
+        diagrams.forEach((diagram) => {
+          const content = diagram.textContent || '';
+          try {
+            mermaid.default.render(`mermaid-${Math.random()}`, content).then(({ svg }) => {
+              diagram.innerHTML = svg;
+            });
+          } catch (error) {
+            console.error('Failed to render mermaid diagram:', error);
+          }
+        });
       });
     }
-  }, []);
+  }, [mermaidLoaded, content]);
 
   return (
     <div className={styles.containers.default}>
