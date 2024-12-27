@@ -17,39 +17,39 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: "Maria Hansen",
+    name: 'Maria Hansen',
     age: 34,
     weightLoss: 25,
-    duration: "6 måneder",
-    story: "Efter at have kæmpet med min vægt i årevis, fandt jeg endelig den rigtige støtte og vejledning. Nu føler jeg mig sundere og mere energisk end nogensinde.",
-    imagePath: "/images/before and after 1.png"
+    duration: '6 måneder',
+    story: 'Efter at have kæmpet med min vægt i årevis, fandt jeg endelig den rigtige støtte og vejledning. Nu føler jeg mig sundere og mere energisk end nogensinde.',
+    imagePath: '/images/before and after 1.png'
   },
   {
     id: 2,
-    name: "Louise Nielsen",
+    name: 'Louise Nielsen',
     age: 42,
     weightLoss: 18,
-    duration: "4 måneder",
-    story: "Det har været en fantastisk rejse. Ikke kun har jeg tabt mig, men jeg har også lært at opretholde en sundere livsstil.",
-    imagePath: "/images/before and after 2.png"
+    duration: '4 måneder',
+    story: 'Det har været en fantastisk rejse. Ikke kun har jeg tabt mig, men jeg har også lært at opretholde en sundere livsstil.',
+    imagePath: '/images/before and after 2.png'
   },
   {
     id: 3,
-    name: "Sofia Andersen",
+    name: 'Sofia Andersen',
     age: 29,
     weightLoss: 15,
-    duration: "3 måneder",
-    story: "Programmet har ændret mit forhold til mad og motion. Jeg er så taknemmelig for den personlige vejledning og støtte.",
-    imagePath: "/images/before and after 3.png"
+    duration: '3 måneder',
+    story: 'Programmet har ændret mit forhold til mad og motion. Jeg er så taknemmelig for den personlige vejledning og støtte.',
+    imagePath: '/images/before and after 3.png'
   },
   {
     id: 4,
-    name: "Emma Pedersen",
+    name: 'Emma Pedersen',
     age: 38,
     weightLoss: 22,
-    duration: "5 måneder",
-    story: "Jeg havde aldrig troet, at jeg kunne nå mine mål, men med den rette vejledning og motivation lykkedes det. Nu føler jeg mig som et nyt menneske.",
-    imagePath: "/images/before and after 4.png"
+    duration: '5 måneder',
+    story: 'Jeg havde aldrig troet, at jeg kunne nå mine mål, men med den rette vejledning og motivation lykkedes det. Nu føler jeg mig som et nyt menneske.',
+    imagePath: '/images/before and after 4.png'
   }
 ];
 
@@ -138,7 +138,7 @@ export default function BeforeAfterSlider() {
               Tabte {testimonials[currentSlide].weightLoss} kg på {testimonials[currentSlide].duration}
             </p>
             <p className="text-neutral-gray-700 italic text-sm">
-              "{testimonials[currentSlide].story}"
+              &ldquo;{testimonials[currentSlide].story}&rdquo;
             </p>
           </div>
         </div>

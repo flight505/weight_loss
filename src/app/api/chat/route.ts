@@ -1,16 +1,22 @@
 import { OpenAIStream, StreamingTextResponse } from 'ai';
-import OpenAI from 'openai';
+import { Configuration, OpenAIApi } from 'openai-edge';
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+// Create an OpenAI API client (that's edge friendly!)
+const config = new Configuration({
+  apiKey: process.env.OPENAI_API_KEY
 });
 
+const openai = new OpenAIApi(config);
+
+// IMPORTANT! Set the runtime to edge
 export const runtime = 'edge';
 
 export async function POST(req: Request) {
+  // Extract the `messages` from the body of the request
   const { messages } = await req.json();
 
-  const response = await openai.chat.completions.create({
+  // Ask OpenAI for a streaming chat completion given the prompt
+  const response = await openai.createChatCompletion({
     model: 'gpt-4',
     stream: true,
     messages: [
@@ -34,10 +40,16 @@ The clinic offers:
 
 Membership costs 299,- DKK every 4 weeks with no binding period.`,
       },
-      ...messages,
+      ...messages.map((message: any) => ({
+        content: message.content,
+        role: message.role,
+      })),
     ],
   });
 
+  // Convert the response into a friendly text-stream
   const stream = OpenAIStream(response);
+
+  // Respond with the stream
   return new StreamingTextResponse(stream);
 } 
