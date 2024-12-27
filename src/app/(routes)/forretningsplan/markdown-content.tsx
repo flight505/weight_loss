@@ -1,99 +1,115 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
+import mermaid from 'mermaid';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { styles } from '@/lib/theme';
 
 interface MarkdownContentProps {
   content: string;
 }
 
-export function MarkdownContent({ content }: MarkdownContentProps) {
-  const [mermaidLoaded, setMermaidLoaded] = useState(false);
-  const mermaidRef = useRef<HTMLDivElement>(null);
+const MermaidDiagram: React.FC<{ content: string }> = ({ content }) => {
+  const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && !mermaidLoaded) {
-      import('mermaid').then((mermaid) => {
-        mermaid.default.initialize({
-          startOnLoad: true,
-          theme: 'neutral',
-          securityLevel: 'loose',
-          fontFamily: 'arial',
-          fontSize: 16,
-          pie: {
-            useWidth: 500,
-          },
-          gantt: {
-            useWidth: 800,
-            fontSize: 14,
-            topPadding: 40,
-            leftPadding: 75,
-            rightPadding: 20,
-            gridLineStartPadding: 35,
-          },
-        });
-        setMermaidLoaded(true);
-        
-        // Find all mermaid diagrams and render them
-        const diagrams = document.querySelectorAll('.mermaid');
-        diagrams.forEach((diagram) => {
-          const content = diagram.textContent || '';
-          try {
-            mermaid.default.render(`mermaid-${Math.random()}`, content).then(({ svg }) => {
-              diagram.innerHTML = svg;
-            });
-          } catch (error) {
-            console.error('Failed to render mermaid diagram:', error);
-          }
-        });
-      });
-    }
-  }, [mermaidLoaded, content]);
+    const renderDiagram = async () => {
+      if (elementRef.current) {
+        try {
+          const { svg } = await mermaid.render(
+            `mermaid-${Math.random().toString(36).substring(2)}`,
+            content
+          );
+          elementRef.current.innerHTML = svg;
+        } catch (error) {
+          console.error('Error rendering Mermaid diagram:', error);
+          elementRef.current.innerHTML = `<pre>${content}</pre>`;
+        }
+      }
+    };
+
+    renderDiagram();
+  }, [content]);
+
+  return <div ref={elementRef} className="my-8" />;
+};
+
+export function MarkdownContent({ content }: MarkdownContentProps) {
+  useEffect(() => {
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'neutral',
+      securityLevel: 'loose',
+      fontFamily: 'inherit',
+    });
+  }, []);
 
   return (
-    <div className={styles.containers.default}>
-      <div className="py-16">
-        <article 
-          ref={mermaidRef}
-          className="prose prose-lg max-w-none prose-headings:text-neutral-gray-800 prose-p:text-neutral-gray-600 prose-a:text-accent-rose-dark prose-strong:text-neutral-gray-800"
-        >
-          <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-            components={{
-              code({ node, inline, className, children, ...props }) {
-                const match = /language-(\w+)/.exec(className || '');
-                if (match && match[1] === 'mermaid') {
-                  return (
-                    <div className="mermaid bg-white rounded-lg p-4 my-4 shadow-sm">
-                      {String(children).replace(/\n$/, '')}
-                    </div>
-                  );
-                }
-                return (
-                  <code className={className} {...props}>
+    <div className="container mx-auto px-4 py-8">
+      <article className="prose prose-neutral lg:prose-xl max-w-none">
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          components={{
+            // Handle Mermaid code blocks
+            code({ inline, className, children, ...props }) {
+              const match = /language-(\w+)/.exec(className || '');
+              if (!inline && match && match[1] === 'mermaid') {
+                return <MermaidDiagram content={String(children)} />;
+              }
+              return (
+                <code className={className} {...props}>
+                  {children}
+                </code>
+              );
+            },
+            // Style tables
+            table({ children }) {
+              return (
+                <div className="overflow-x-auto my-8">
+                  <table className="min-w-full divide-y divide-neutral-gray-200">
                     {children}
-                  </code>
-                );
-              },
-              table: ({ node, ...props }) => (
-                <div className="overflow-x-auto">
-                  <table className="min-w-full divide-y divide-neutral-gray-200" {...props} />
+                  </table>
                 </div>
-              ),
-              th: ({ node, ...props }) => (
-                <th className="px-6 py-3 bg-neutral-gray-50 text-left text-xs font-medium text-neutral-gray-500 uppercase tracking-wider" {...props} />
-              ),
-              td: ({ node, ...props }) => (
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-neutral-gray-600" {...props} />
-              ),
-            }}
-          >
-            {content}
-          </ReactMarkdown>
-        </article>
-      </div>
+              );
+            },
+            thead({ children }) {
+              return <thead className="bg-neutral-gray-50">{children}</thead>;
+            },
+            th({ children }) {
+              return (
+                <th className="px-6 py-3 text-left text-sm font-semibold text-neutral-gray-900">
+                  {children}
+                </th>
+              );
+            },
+            td({ children }) {
+              return (
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-neutral-gray-700">
+                  {children}
+                </td>
+              );
+            },
+            // Style other elements
+            h1: ({ children }) => (
+              <h1 className="text-4xl font-bold mb-8 text-neutral-gray-900">
+                {children}
+              </h1>
+            ),
+            h2: ({ children }) => (
+              <h2 className="text-3xl font-semibold mb-6 text-neutral-gray-800">
+                {children}
+              </h2>
+            ),
+            h3: ({ children }) => (
+              <h3 className="text-2xl font-medium mb-4 text-neutral-gray-800">
+                {children}
+              </h3>
+            ),
+          }}
+        >
+          {content}
+        </ReactMarkdown>
+      </article>
     </div>
   );
 } 

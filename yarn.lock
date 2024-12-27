@@ -7203,33 +7203,7 @@ mermaid-isomorphic@^3.0.0:
     "@fortawesome/fontawesome-free" "^6.0.0"
     mermaid "^11.0.0"
 
-mermaid@^11.0.0:
-  version "11.4.1"
-  resolved "https://registry.npmjs.org/mermaid/-/mermaid-11.4.1.tgz"
-  integrity sha512-Mb01JT/x6CKDWaxigwfZYuYmDZ6xtrNwNlidKZwkSrDaY9n90tdrJTV5Umk+wP1fZscGptmKFXHsXMDEVZ+Q6A==
-  dependencies:
-    "@braintree/sanitize-url" "^7.0.1"
-    "@iconify/utils" "^2.1.32"
-    "@mermaid-js/parser" "^0.3.0"
-    "@types/d3" "^7.4.3"
-    cytoscape "^3.29.2"
-    cytoscape-cose-bilkent "^4.1.0"
-    cytoscape-fcose "^2.2.0"
-    d3 "^7.9.0"
-    d3-sankey "^0.12.3"
-    dagre-d3-es "7.0.11"
-    dayjs "^1.11.10"
-    dompurify "^3.2.1"
-    katex "^0.16.9"
-    khroma "^2.1.0"
-    lodash-es "^4.17.21"
-    marked "^13.0.2"
-    roughjs "^4.6.6"
-    stylis "^4.3.1"
-    ts-dedent "^2.2.0"
-    uuid "^9.0.1"
-
-mermaid@^11.4.1:
+mermaid@^11.0.0, mermaid@^11.4.1:
   version "11.4.1"
   resolved "https://registry.yarnpkg.com/mermaid/-/mermaid-11.4.1.tgz#577fad5c31a01a06d9f793e298d411f1379eecc8"
   integrity sha512-Mb01JT/x6CKDWaxigwfZYuYmDZ6xtrNwNlidKZwkSrDaY9n90tdrJTV5Umk+wP1fZscGptmKFXHsXMDEVZ+Q6A==
@@ -9087,7 +9061,7 @@ remark-frontmatter@4.0.1:
 
 remark-gfm@^4.0.0:
   version "4.0.0"
-  resolved "https://registry.npmjs.org/remark-gfm/-/remark-gfm-4.0.0.tgz"
+  resolved "https://registry.yarnpkg.com/remark-gfm/-/remark-gfm-4.0.0.tgz#aea777f0744701aa288b67d28c43565c7e8c35de"
   integrity sha512-U92vJgBPkbw4Zfu/IiW2oTZLSL3Zpv+uI7My2eq8JxKgqraFdU8YUGicEJCEgSbeaG+QDFqIcwwfMTOEelPxuA==
   dependencies:
     "@types/mdast" "^4.0.0"
