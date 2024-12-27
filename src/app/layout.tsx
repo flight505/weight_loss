@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import Navbar from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
+import { ChatBot } from '@/components/chat/chat-bot';
 import './globals.css';
 
 const inter = Inter({
@@ -35,6 +36,7 @@ export default function RootLayout({
           <Navbar />
           {children}
           <Footer />
+          <ChatBot />
         </ThemeProvider>
       </body>
     </html>
