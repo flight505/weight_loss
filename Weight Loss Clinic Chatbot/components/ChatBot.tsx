@@ -15,6 +15,7 @@ export function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
   const { messages, input, handleInputChange, handleSubmit, isLoading } = useAssistant({
     api: '/api/chat',
+    threadId: null, // This will be managed automatically by the AI SDK
   });
 
   const handleContactSupport = (type: 'phone' | 'email') => {
