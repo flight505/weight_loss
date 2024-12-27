@@ -121,102 +121,23 @@ export function getColor(path: string): string {
 
 // Common style combinations
 export const styles = {
-  gradients: {
-    softRose: `linear-gradient(135deg, ${theme.colors.accent.rose.light} 0%, ${theme.colors.accent.rose.main} 100%)`,
-    warmSand: `linear-gradient(135deg, ${theme.colors.accent.sand.light} 0%, ${theme.colors.accent.sand.dark} 100%)`,
-    peachToRose: `linear-gradient(135deg, ${theme.colors.accent.peach.light} 0%, ${theme.colors.accent.rose.main} 100%)`,
-    multiTone: `linear-gradient(135deg, 
-      ${theme.colors.accent.sand.light} 0%, 
-      ${theme.colors.accent.rose.light} 50%,
-      ${theme.colors.accent.peach.light} 100%
-    )`,
-  },
   containers: {
-    default: 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8',
-    narrow: 'max-w-3xl mx-auto px-4 sm:px-6',
+    default: 'container mx-auto px-4 md:px-6 lg:px-8',
+    narrow: 'container mx-auto px-4 md:px-6 lg:px-8 max-w-4xl',
   },
   buttons: {
-    primary: `
-      bg-accent-rose-main
-      hover:bg-accent-rose-dark
-      text-neutral-gray-800
-      font-medium
-      rounded-full
-      shadow-sm
-      hover:shadow-md
-      transform
-      hover:-translate-y-0.5
-      transition-all
-      duration-300
-    `,
-    secondary: `
-      bg-accent-sand-main
-      hover:bg-accent-sand-dark
-      text-neutral-gray-800
-      font-medium
-      rounded-full
-      shadow-sm
-      hover:shadow-md
-      transform
-      hover:-translate-y-0.5
-      transition-all
-      duration-300
-    `,
-    outline: `
-      bg-white
-      hover:bg-accent-rose-light
-      text-neutral-gray-800
-      font-medium
-      rounded-full
-      border
-      border-accent-rose-main
-      hover:border-accent-rose-dark
-      shadow-sm
-      hover:shadow-md
-      transform
-      hover:-translate-y-0.5
-      transition-all
-      duration-300
-    `,
+    primary: 'bg-accent-rose-main text-white font-medium rounded-full hover:bg-accent-rose-dark transition-colors',
+    secondary: 'bg-accent-rose-light text-accent-rose-dark font-medium rounded-full hover:bg-accent-rose-main hover:text-white transition-colors',
   },
   cards: {
-    default: `
-      bg-white
-      rounded-2xl
-      shadow-sm
-      hover:shadow-md
-      transition-all
-      duration-300
-      border
-      border-accent-rose-light
-      hover:border-accent-rose-main
-    `,
-    highlighted: `
-      bg-white
-      rounded-2xl
-      shadow-md
-      hover:shadow-lg
-      transition-all
-      duration-300
-      border-2
-      border-accent-rose-main
-      hover:border-accent-rose-dark
-    `,
-    glass: `
-      bg-white/80
-      backdrop-blur-lg
-      rounded-2xl
-      shadow-sm
-      hover:shadow-md
-      transition-all
-      duration-300
-      border
-      border-accent-rose-light/50
-    `,
+    glass: 'bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-neutral-gray-100/50',
+  },
+  gradients: {
+    multiTone: 'bg-gradient-to-br from-accent-rose-light via-accent-peach-light to-accent-rose-main/30',
+    softRose: 'bg-gradient-to-br from-accent-rose-light to-accent-rose-main/30',
+    peachToRose: 'bg-gradient-to-br from-accent-peach-light to-accent-rose-light',
   },
   decorative: {
-    softBorder: `border border-accent-rose-light/50`,
-    glowHover: `hover:shadow-glow transition-shadow duration-300`,
-    glassMorphism: `bg-white/80 backdrop-blur-lg`,
+    glowHover: 'hover:shadow-glow transition-shadow duration-300',
   },
 }; 

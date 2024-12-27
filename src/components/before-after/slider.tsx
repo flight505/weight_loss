@@ -53,7 +53,7 @@ const testimonials: Testimonial[] = [
   }
 ];
 
-const AUTO_ROTATE_INTERVAL = 5000; // 5 seconds
+const AUTO_ROTATE_INTERVAL = 5000;
 
 export default function BeforeAfterSlider() {
   const [currentSlide, setCurrentSlide] = useState(0);
