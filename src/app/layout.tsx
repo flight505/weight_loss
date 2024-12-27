@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import { cn } from '@/lib/utils';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
@@ -11,7 +10,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Weight Loss Clinic',
-  description: 'Your journey to a healthier you starts here.',
+  description: 'Professional weight loss clinic offering personalized programs and medical support.',
 };
 
 export default function RootLayout({
@@ -21,12 +20,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn(inter.className, 'min-h-screen flex flex-col')}>
+      <body
+        className={`${inter.className} min-h-screen flex flex-col bg-background text-foreground`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
-          disableTransitionOnChange
         >
           <Header />
           <main className="flex-grow">{children}</main>

@@ -48,7 +48,9 @@ Membership costs 299,- DKK every 4 weeks with no binding period.`,
         for await (const chunk of response) {
           const content = chunk.choices[0]?.delta?.content;
           if (content) {
-            controller.enqueue(new TextEncoder().encode(`data: ${JSON.stringify({ content })}\n\n`));
+            controller.enqueue(
+              new TextEncoder().encode(`data: ${JSON.stringify({ content })}\n\n`)
+            );
           }
         }
         controller.enqueue(new TextEncoder().encode('data: [DONE]\n\n'));

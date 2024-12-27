@@ -8,7 +8,9 @@ const nextConfig = {
     unoptimized: true
   },
   experimental: {
-    optimizeCss: false
+    serverActions: {
+      bodySizeLimit: '2mb'
+    }
   }
 }
 
