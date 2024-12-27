@@ -5,29 +5,10 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY || '',
 });
 
-// IMPORTANT! Set the runtime to edge
+// Set the runtime to edge
 export const runtime = 'edge';
 
-export async function POST(req: Request) {
-  try {
-    // Parse the request body
-    const { messages } = await req.json();
-
-    if (!messages || !Array.isArray(messages)) {
-      throw new Error('Invalid messages format');
-    }
-
-    console.log('Processing chat request with messages:', messages);
-
-    // Ask OpenAI for a streaming chat completion
-    const response = await openai.chat.completions.create({
-      model: 'gpt-4',
-      stream: true,
-      temperature: 0.7,
-      messages: [
-        {
-          role: 'system',
-          content: `You are a helpful weight loss clinic assistant. You help users with questions about:
+const systemPrompt = `You are a helpful weight loss clinic assistant. You help users with questions about:
 - Weight loss programs
 - Medications like Wegovy
 - Booking appointments
@@ -47,34 +28,63 @@ Contact information:
 - Phone: +45 26179868
 - Email: jesper_vang@me.com
 
-Membership costs 299,- DKK every 4 weeks with no binding period.`,
-        },
+Membership costs 299,- DKK every 4 weeks with no binding period.`;
+
+export async function POST(req: Request) {
+  try {
+    // Extract the `messages` from the body of the request
+    const { messages } = await req.json();
+
+    // Ensure messages array exists and is valid
+    if (!messages || !Array.isArray(messages)) {
+      return new Response(
+        JSON.stringify({ error: 'Invalid messages format' }), 
+        { status: 400 }
+      );
+    }
+
+    // Request the OpenAI API for the response based on the prompt
+    const response = await openai.chat.completions.create({
+      model: 'gpt-4',
+      stream: true,
+      messages: [
+        { role: 'system', content: systemPrompt },
         ...messages,
       ],
     });
 
     // Transform the response into a ReadableStream
     const encoder = new TextEncoder();
-    const decoder = new TextDecoder();
-    
     const stream = new ReadableStream({
       async start(controller) {
-        const push = (chunk: string) => {
-          controller.enqueue(encoder.encode(chunk));
+        const push = (chunk: any) => {
+          controller.enqueue(encoder.encode(`data: ${JSON.stringify(chunk)}\n\n`));
         };
 
-        for await (const chunk of response) {
-          const content = chunk.choices[0]?.delta?.content;
-          if (content) {
-            push(`data: ${JSON.stringify({ role: "assistant", content })}\n\n`);
+        try {
+          let text = '';
+          for await (const chunk of response) {
+            const content = chunk.choices[0]?.delta?.content;
+            if (content) {
+              text += content;
+              push({
+                id: crypto.randomUUID(),
+                role: 'assistant',
+                content: text,
+                createdAt: new Date(),
+              });
+            }
           }
+          push('[DONE]');
+          controller.close();
+        } catch (error) {
+          console.error('Stream processing error:', error);
+          controller.error(error);
         }
-        
-        push('data: [DONE]\n\n');
-        controller.close();
       },
     });
 
+    // Return the stream with proper headers
     return new Response(stream, {
       headers: {
         'Content-Type': 'text/event-stream',
@@ -92,7 +102,7 @@ Membership costs 299,- DKK every 4 weeks with no binding period.`,
       { 
         status: 500,
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         }
       }
     );
