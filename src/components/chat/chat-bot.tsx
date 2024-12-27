@@ -56,10 +56,6 @@ export function ChatBot() {
     }
   };
 
-  const handleClose = () => {
-    setIsOpen(false);
-  };
-
   return (
     <>
       {!isOpen && (
@@ -83,15 +79,14 @@ export function ChatBot() {
                 {isLoading ? 'Skriver...' : 'Online'}
               </p>
             </div>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="ml-auto rounded-full hover:bg-accent-rose-light"
-              onClick={handleClose}
-              aria-label="Close chat"
+            <button
+              type="button"
+              className="ml-auto p-2 rounded-full hover:bg-gray-100 transition-colors"
+              onClick={() => setIsOpen(false)}
+              aria-label="Luk chat"
             >
               <X className="h-5 w-5" />
-            </Button>
+            </button>
           </CardHeader>
           
           <CardContent className="flex-grow p-4 overflow-hidden">
