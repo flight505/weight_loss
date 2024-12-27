@@ -1,32 +1,25 @@
-import { Configuration, OpenAIApi } from 'openai-edge';
+import OpenAI from 'openai';
 
-// Create an OpenAI API client (that's edge friendly!)
-const config = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
+// Create an OpenAI API client
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY || '',
 });
 
-const openai = new OpenAIApi(config);
-
-// IMPORTANT! Set the runtime to edge
+// Set the runtime to edge for best performance
 export const runtime = 'edge';
 
-interface Message {
-  role: 'user' | 'assistant' | 'system';
-  content: string;
-}
-
 export async function POST(req: Request) {
-  // Extract the `messages` from the body of the request
-  const { messages }: { messages: Message[] } = await req.json();
+  try {
+    const { messages } = await req.json();
 
-  // Ask OpenAI for a streaming chat completion given the prompt
-  const response = await openai.createChatCompletion({
-    model: 'gpt-4',
-    stream: true,
-    messages: [
-      {
-        role: 'system',
-        content: `You are a helpful weight loss clinic assistant. You help users with questions about:
+    // Ask OpenAI for a streaming chat completion
+    const stream = await openai.chat.completions.create({
+      model: 'gpt-4',
+      stream: true,
+      messages: [
+        {
+          role: 'system',
+          content: `You are a helpful weight loss clinic assistant. You help users with questions about:
 - Weight loss programs
 - Medications like Wegovy
 - Booking appointments
@@ -43,17 +36,24 @@ The clinic offers:
 - Community support
 
 Membership costs 299,- DKK every 4 weeks with no binding period.`,
-      },
-      ...messages,
-    ],
-  });
+        },
+        ...messages,
+      ],
+    });
 
-  // Return the response as a streaming response
-  return new Response(response.body, {
-    headers: {
-      'Content-Type': 'text/event-stream',
-      'Cache-Control': 'no-cache',
-      'Connection': 'keep-alive',
-    },
-  });
+    // Return the response as a streaming response
+    return new Response(stream as any as ReadableStream, {
+      headers: {
+        'Content-Type': 'text/event-stream',
+        'Cache-Control': 'no-cache',
+        'Connection': 'keep-alive',
+      },
+    });
+  } catch (error) {
+    console.error('Error in chat API:', error);
+    return new Response(
+      JSON.stringify({ error: 'There was an error processing your request' }),
+      { status: 500 }
+    );
+  }
 } 
