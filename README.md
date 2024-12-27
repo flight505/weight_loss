@@ -1,39 +1,113 @@
-# SlankLet.dk
+# Slanklet - Medical Weight Loss Clinic Website
 
-Medicinsk vægttabsklinik med Dr. Peyman Pedrampour, specialiseret i behandling med Wegovy®.
+A modern, responsive website for Dr. Peyman's medical weight loss clinic built with Next.js 14 and TypeScript.
 
-## Tech Stack
+## Technology Stack
 
-- Next.js 14
-- TypeScript
-- Tailwind CSS
-- Shadcn UI
-- Deployed on Vercel
+### Core Technologies
+- **Next.js 14**: React framework with App Router for server-side rendering and routing
+- **TypeScript**: For type-safe code and better developer experience
+- **React 18**: For building user interfaces with server components
+- **Node.js**: Runtime environment
 
-## Features
+### UI and Styling
+- **Tailwind CSS**: Utility-first CSS framework for styling
+- **Shadcn UI**: High-quality UI components built on Radix UI
+- **Radix UI**: Unstyled, accessible UI components
+- **Lucide Icons**: Beautiful, consistent icon set
 
-- Moderne, responsivt design
-- Optimeret for SEO
-- Før/efter billedgalleri
-- Patienthistorier
-- Online booking system
+### State Management & Forms
+- **React Hook Form**: Form validation and handling
+- **Zod**: TypeScript-first schema validation
+- **NUQS**: URL search params state management
 
-## Development
+### Performance & Optimization
+- **Next.js Image**: Automatic image optimization
+- **Turbopack**: Fast development builds
+- **CSS Modules**: Scoped styling solution
 
-```bash
-# Install dependencies
-yarn install
+### Development Tools
+- **ESLint**: Code linting
+- **Prettier**: Code formatting
+- **Husky**: Git hooks for code quality
+- **Vercel**: Deployment platform
 
-# Run development server
-yarn dev
+## Key Features
 
-# Build for production
-yarn build
+### User Interface
+- Responsive design with mobile-first approach
+- Modern, feminine aesthetic with carefully chosen color palette
+- Smooth animations and transitions
+- Accessible components following WCAG guidelines
 
-# Start production server
-yarn start
+### Components
+- Dynamic before/after image slider
+- Interactive booking system
+- Contact form with validation
+- Responsive navigation
+- Treatment information pages
+- Testimonials showcase
+
+### Performance
+- Server-side rendering for fast initial load
+- Image optimization and lazy loading
+- Route prefetching
+- Optimized Core Web Vitals
+
+## Project Structure
+
 ```
+src/
+├── app/                 # Next.js App Router pages
+│   ├── (routes)/       # Route groups
+│   ├── api/            # API routes
+│   └── layout.tsx      # Root layout
+├── components/         # Reusable components
+│   ├── ui/            # UI components
+│   ├── layout/        # Layout components
+│   └── forms/         # Form components
+├── lib/               # Utility functions
+├── styles/           # Global styles
+└── types/            # TypeScript types
+```
+
+## Image Guidelines
+
+For the before/after slider component, use the following image specifications:
+- **Width**: 1792px (3584px for 2x)
+- **Height**: 784px (1568px for 2x)
+- **Format**: WebP or PNG
+- **Location**: `/public/images/`
+
+## Getting Started
+
+1. Clone the repository:
+\`\`\`bash
+git clone https://github.com/flight505/weight_loss.git
+\`\`\`
+
+2. Install dependencies:
+\`\`\`bash
+yarn install
+\`\`\`
+
+3. Run the development server:
+\`\`\`bash
+yarn dev
+\`\`\`
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Deployment
 
-The site is automatically deployed to Vercel through GitHub integration. Every push to the main branch triggers a new deployment.
+The site is deployed on Vercel. Each push to the main branch triggers an automatic deployment.
+
+## Contributing
+
+1. Create a feature branch
+2. Make your changes
+3. Submit a pull request
+
+## License
+
+This project is private and proprietary. All rights reserved.
