@@ -24,14 +24,14 @@ const MermaidDiagram: React.FC<{ content: string }> = ({ content }) => {
               primaryColor: '#f3d0d7',
               secondaryColor: '#f0ebe3',
               tertiaryColor: '#fff',
-              primaryBorderColor: '#fda4af',
-              secondaryBorderColor: '#e5e0d8',
-              tertiaryBorderColor: '#d1d5db',
+              primaryBorderColor: '#e5e7eb',
+              secondaryBorderColor: '#f3f4f6',
+              tertiaryBorderColor: '#f9fafb',
               primaryTextColor: '#1f2937',
               secondaryTextColor: '#4b5563',
               tertiaryTextColor: '#6b7280',
-              lineColor: '#9ca3af',
-              fontSize: '16px',
+              lineColor: '#e5e7eb',
+              fontSize: '12px',
               fontFamily: 'inherit'
             },
             securityLevel: 'loose',
@@ -55,7 +55,7 @@ const MermaidDiagram: React.FC<{ content: string }> = ({ content }) => {
   return (
     <div 
       ref={elementRef} 
-      className="my-8 p-6 bg-white rounded-lg shadow-sm border border-neutral-gray-200"
+      className="my-6 p-4 bg-white rounded-lg shadow-sm border border-neutral-gray-200"
     />
   );
 };
@@ -63,7 +63,7 @@ const MermaidDiagram: React.FC<{ content: string }> = ({ content }) => {
 export function MarkdownContent({ content }: MarkdownContentProps) {
   return (
     <div className="container mx-auto px-4 py-8">
-      <article className="prose prose-neutral lg:prose-xl max-w-none">
+      <article className="prose prose-sm max-w-none text-xs">
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           components={{
@@ -74,7 +74,7 @@ export function MarkdownContent({ content }: MarkdownContentProps) {
                 return <MermaidDiagram content={String(children)} />;
               }
               return (
-                <code className={className} {...props}>
+                <code className={`${className} text-xs`} {...props}>
                   {children}
                 </code>
               );
@@ -82,8 +82,8 @@ export function MarkdownContent({ content }: MarkdownContentProps) {
             // Style tables
             table({ children }) {
               return (
-                <div className="overflow-x-auto my-8">
-                  <table className="min-w-full divide-y divide-neutral-gray-200 bg-white rounded-lg shadow-sm">
+                <div className="overflow-x-auto my-4">
+                  <table className="min-w-full divide-y divide-neutral-gray-200 bg-white rounded-lg shadow-sm text-xs">
                     {children}
                   </table>
                 </div>
@@ -94,63 +94,63 @@ export function MarkdownContent({ content }: MarkdownContentProps) {
             },
             th({ children }) {
               return (
-                <th className="px-6 py-3 text-left text-sm font-semibold text-neutral-gray-900 border-b">
+                <th className="px-4 py-2 text-left text-xs font-semibold text-neutral-gray-900 border-b">
                   {children}
                 </th>
               );
             },
             td({ children }) {
               return (
-                <td className="px-6 py-4 text-sm text-neutral-gray-700 border-b border-neutral-gray-100">
+                <td className="px-4 py-2 text-xs text-neutral-gray-700 border-b border-neutral-gray-100">
                   {children}
                 </td>
               );
             },
             // Style other elements
             h1: ({ children }) => (
-              <h1 className="text-4xl font-bold mb-8 text-neutral-gray-900 border-b pb-4">
+              <h1 className="text-2xl font-bold mb-4 text-neutral-gray-900 border-b pb-2">
                 {children}
               </h1>
             ),
             h2: ({ children }) => (
-              <h2 className="text-3xl font-semibold mb-6 text-neutral-gray-800 border-b pb-3">
+              <h2 className="text-xl font-semibold mb-3 text-neutral-gray-800 border-b pb-2">
                 {children}
               </h2>
             ),
             h3: ({ children }) => (
-              <h3 className="text-2xl font-medium mb-4 text-neutral-gray-800">
+              <h3 className="text-lg font-medium mb-2 text-neutral-gray-800">
                 {children}
               </h3>
             ),
             p: ({ children }) => (
-              <p className="text-neutral-gray-700 leading-relaxed mb-4">
+              <p className="text-xs text-neutral-gray-700 leading-relaxed mb-3">
                 {children}
               </p>
             ),
             ul: ({ children }) => (
-              <ul className="list-disc list-outside pl-6 mb-4 space-y-2 text-neutral-gray-700">
+              <ul className="list-disc list-outside pl-4 mb-3 space-y-1 text-xs text-neutral-gray-700">
                 {children}
               </ul>
             ),
             ol: ({ children }) => (
-              <ol className="list-decimal list-outside pl-6 mb-4 space-y-2 text-neutral-gray-700">
+              <ol className="list-decimal list-outside pl-4 mb-3 space-y-1 text-xs text-neutral-gray-700">
                 {children}
               </ol>
             ),
             li: ({ children }) => (
-              <li className="leading-relaxed">
+              <li className="leading-relaxed text-xs">
                 {children}
               </li>
             ),
             blockquote: ({ children }) => (
-              <blockquote className="border-l-4 border-accent-rose-main pl-4 italic text-neutral-gray-600 my-4">
+              <blockquote className="border-l-4 border-accent-rose-main pl-3 italic text-xs text-neutral-gray-600 my-3">
                 {children}
               </blockquote>
             ),
             a: ({ children, href }) => (
               <a 
                 href={href} 
-                className="text-accent-rose-dark hover:text-accent-rose-main underline decoration-1 underline-offset-2"
+                className="text-xs text-accent-rose-dark hover:text-accent-rose-main underline decoration-1 underline-offset-2"
               >
                 {children}
               </a>
