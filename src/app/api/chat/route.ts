@@ -1,11 +1,11 @@
 import OpenAI from 'openai';
 
-// Create an OpenAI API client
+// Create an OpenAI API client (that can run on edge)
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY || '',
 });
 
-// Set the runtime to edge for best performance
+// IMPORTANT! Set the runtime to edge
 export const runtime = 'edge';
 
 export async function POST(req: Request) {
@@ -13,9 +13,10 @@ export async function POST(req: Request) {
     const { messages } = await req.json();
 
     // Ask OpenAI for a streaming chat completion
-    const stream = await openai.chat.completions.create({
+    const response = await openai.chat.completions.create({
       model: 'gpt-4',
       stream: true,
+      temperature: 0.7,
       messages: [
         {
           role: 'system',
@@ -41,8 +42,22 @@ Membership costs 299,- DKK every 4 weeks with no binding period.`,
       ],
     });
 
+    // Create a streaming response
+    const stream = new ReadableStream({
+      async start(controller) {
+        for await (const chunk of response) {
+          const content = chunk.choices[0]?.delta?.content;
+          if (content) {
+            controller.enqueue(new TextEncoder().encode(`data: ${JSON.stringify({ content })}\n\n`));
+          }
+        }
+        controller.enqueue(new TextEncoder().encode('data: [DONE]\n\n'));
+        controller.close();
+      },
+    });
+
     // Return the response as a streaming response
-    return new Response(stream as any as ReadableStream, {
+    return new Response(stream, {
       headers: {
         'Content-Type': 'text/event-stream',
         'Cache-Control': 'no-cache',
@@ -52,8 +67,16 @@ Membership costs 299,- DKK every 4 weeks with no binding period.`,
   } catch (error) {
     console.error('Error in chat API:', error);
     return new Response(
-      JSON.stringify({ error: 'There was an error processing your request' }),
-      { status: 500 }
+      JSON.stringify({ 
+        error: 'There was an error processing your request',
+        details: error instanceof Error ? error.message : String(error)
+      }),
+      { 
+        status: 500,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
     );
   }
 } 

@@ -5368,7 +5368,7 @@ vercel-ai@^0.0.0:
 
 vercel@^39.2.2:
   version "39.2.2"
-  resolved "https://registry.npmjs.org/vercel/-/vercel-39.2.2.tgz"
+  resolved "https://registry.yarnpkg.com/vercel/-/vercel-39.2.2.tgz#a1e4a9a7592ec51607a9046411825be0c0ac45ae"
   integrity sha512-FTt0r++eORfQ3TLshYFdq5WiC7xVfbKMLE5YsBzex41yeDSCo5a5KXD6nDyMm+IIlu++XsHEVJRnfOA/JjL/mw==
   dependencies:
     "@vercel/build-utils" "8.8.0"
