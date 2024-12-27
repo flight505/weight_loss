@@ -19,22 +19,22 @@ const MermaidDiagram: React.FC<{ content: string }> = ({ content }) => {
           mermaid.initialize({
             startOnLoad: true,
             theme: 'base',
+            flowchart: {
+              htmlLabels: true, // Enables better text handling
+              nodeSpacing: 100, // Adjust node spacing
+              rankSpacing: 80,
+              useMaxWidth: true,
+            },
             themeVariables: {
+              fontSize: '99%', // Adjust font size for readability
               background: '#ffffff',
               primaryColor: '#f3d0d7',
-              secondaryColor: '#f0ebe3',
-              tertiaryColor: '#fff',
               primaryBorderColor: '#e5e7eb',
-              secondaryBorderColor: '#f3f4f6',
-              tertiaryBorderColor: '#f9fafb',
               primaryTextColor: '#1f2937',
-              secondaryTextColor: '#4b5563',
-              tertiaryTextColor: '#6b7280',
-              lineColor: '#e5e7eb',
-              fontSize: '12px',
-              fontFamily: 'inherit'
+              fontFamily: 'inherit',
+
             },
-            securityLevel: 'loose',
+            securityLevel: 'strict',
           });
 
           const { svg } = await mermaid.render(
@@ -55,7 +55,7 @@ const MermaidDiagram: React.FC<{ content: string }> = ({ content }) => {
   return (
     <div 
       ref={elementRef} 
-      className="my-6 p-4 bg-white rounded-lg shadow-sm border border-neutral-gray-200"
+      className="my-6 p-4 bg-white rounded-lg shadow-sm"
     />
   );
 };

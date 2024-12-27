@@ -180,12 +180,12 @@ graph TD
 
 ```mermaid
 graph TD
-    A[GDPR-compliance] --> B[Personfølsomme data]
-    A --> C[Tekniske foranstaltninger]
-    B --> D[Helbredsoplysninger]
-    B --> E[Persondata]
-    C --> F[Krypteret kommunikation]
-    C --> G[Sikker dataopbevaring]
+    A["GDPR-<br>compliance"] --> B["Personfølsomme<br>data"]
+    A --> C["Tekniske<br>foranstaltninger"]
+    B --> D["Helbreds-<br>oplysninger"]
+    B --> E["Person-<br>data"]
+    C --> F["Krypteret<br>kommunikation"]
+    C --> G["Sikker<br>dataopbevaring"]
 ```
 
 ## 8. Risikoanalyse
