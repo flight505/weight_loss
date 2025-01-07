@@ -54,6 +54,9 @@ A modern, responsive website for Dr. Peyman's medical weight loss clinic built w
 - Route prefetching
 - Optimized Core Web Vitals
 
+### Sitemap 
+![sitemap](https://github.com/user-attachments/assets/0b067339-a7b9-4e82-a80e-34df461bc180)
+
 ## Project Structure
 
 ```
