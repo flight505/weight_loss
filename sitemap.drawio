@@ -1,0 +1,116 @@
+<mxfile host="65bd71144e">
+    <diagram id="EfQsGexU7nvQNV00VeSJ" name="Page-1">
+        <mxGraphModel dx="2440" dy="1518" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="800" pageHeight="600" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="32" value="" style="whiteSpace=wrap;html=1;shadow=1;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=10;" vertex="1" parent="1">
+                    <mxGeometry x="-150" y="-140" width="1430" height="710" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="Homepage: Welcome to the website - Information on Weight Management and BMI Calculations" style="shape=rectangle;fontSize=10;align=center;whiteSpace=wrap;spacing=10;fontFamily=Architects Daughter;shadow=1;hachureGap=4;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;sketch=1;curveFitting=1;jiggle=2;" parent="1" vertex="1">
+                    <mxGeometry x="320" y="10" width="300" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" style="edgeStyle=elbowEdgeStyle;hachureGap=4;html=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=10;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=default;strokeColor=default;fontColor=default;fillColor=default;shadow=1;sketch=1;curveFitting=1;jiggle=2;" edge="1" parent="1" source="3" target="7">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-150" y="410" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="-90" y="290"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="3" value="Stratification: Calculate your BMI and understand its implications - This will be the stratification tool" style="shape=rectangle;fontSize=10;whiteSpace=wrap;spacing=10;fontFamily=Architects Daughter;shadow=1;hachureGap=4;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;sketch=1;curveFitting=1;jiggle=2;" parent="1" vertex="1">
+                    <mxGeometry x="-30" y="160" width="300" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="Newsroom: Latest updates and news from Fit for Livet" style="shape=rectangle;fontSize=10;whiteSpace=wrap;spacing=10;fontFamily=Architects Daughter;shadow=1;hachureGap=4;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;sketch=1;curveFitting=1;jiggle=2;" parent="1" vertex="1">
+                    <mxGeometry x="670" y="360" width="300" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" style="fontSize=10;fontFamily=Architects Daughter;fillColor=default;shadow=1;hachureGap=4;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;sketch=1;curveFitting=1;jiggle=2;" parent="1" source="2" target="3" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="340" y="170"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="11" style="labelBackgroundColor=default;fontSize=10;fontFamily=Architects Daughter;strokeColor=default;fontColor=default;fillColor=default;shadow=1;hachureGap=4;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;sketch=1;curveFitting=1;jiggle=2;" parent="1" source="2" target="4" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="610" y="180"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="12" style="fontSize=10;fontFamily=Architects Daughter;fillColor=default;shadow=1;hachureGap=4;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;sketch=1;curveFitting=1;jiggle=2;" parent="1" source="2" target="5" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="370" y="260"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="13" style="labelBackgroundColor=default;fontSize=10;fontFamily=Architects Daughter;strokeColor=default;fontColor=default;fillColor=default;shadow=1;hachureGap=4;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;sketch=1;curveFitting=1;jiggle=2;" parent="1" source="2" target="6" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="570" y="250"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="14" style="labelBackgroundColor=default;fontSize=10;fontFamily=Architects Daughter;strokeColor=default;fontColor=default;fillColor=default;shadow=1;hachureGap=4;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;sketch=1;curveFitting=1;jiggle=2;" parent="1" source="2" target="7" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="400" y="360"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="15" style="fontSize=10;labelBackgroundColor=default;fontFamily=Architects Daughter;strokeColor=default;fontColor=default;fillColor=default;shadow=1;hachureGap=4;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;sketch=1;curveFitting=1;jiggle=2;" parent="1" source="2" target="8" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="560" y="360"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="16" style="labelBackgroundColor=default;fontSize=10;fontFamily=Architects Daughter;strokeColor=default;fontColor=default;fillColor=default;shadow=1;hachureGap=4;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;sketch=1;curveFitting=1;jiggle=2;" parent="1" source="2" target="9" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" style="dashed=1;labelBackgroundColor=default;fontSize=10;fontFamily=Architects Daughter;strokeColor=default;fontColor=default;fillColor=default;shadow=1;hachureGap=4;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;sketch=1;curveFitting=1;jiggle=2;" parent="1" source="5" target="6" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" style="dashed=1;labelBackgroundColor=default;fontSize=10;fontFamily=Architects Daughter;strokeColor=default;fontColor=default;fillColor=default;shadow=1;hachureGap=4;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;sketch=1;curveFitting=1;jiggle=2;" parent="1" source="7" target="8" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="A tool to count clicks for various purposes, and gethering current prices of the weight mannagment drugs from medicin.dk" style="shape=rectangle;fontSize=10;whiteSpace=wrap;spacing=10;shadow=1;fontFamily=Architects Daughter;hachureGap=4;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;sketch=1;curveFitting=1;jiggle=2;" parent="1" vertex="1">
+                    <mxGeometry x="670" y="160" width="300" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="Membership Prices: Detailed pricing information for memberships" style="shape=rectangle;fontSize=10;whiteSpace=wrap;spacing=10;fontFamily=Architects Daughter;shadow=1;hachureGap=4;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;sketch=1;curveFitting=1;jiggle=2;" parent="1" vertex="1">
+                    <mxGeometry x="670" y="260" width="300" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="Contact Us: Get in touch for inquiries" style="shape=rectangle;fontSize=10;whiteSpace=wrap;spacing=10;fontFamily=Architects Daughter;shadow=1;hachureGap=4;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;sketch=1;curveFitting=1;jiggle=2;" parent="1" vertex="1">
+                    <mxGeometry x="320" y="460" width="300" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="Treatment FAQ: Common questions and answers about weight management treatments" style="shape=rectangle;fontSize=10;whiteSpace=wrap;spacing=10;fontFamily=Architects Daughter;shadow=1;hachureGap=4;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;sketch=1;curveFitting=1;jiggle=2;" parent="1" vertex="1">
+                    <mxGeometry x="-30" y="360" width="300" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" style="edgeStyle=none;hachureGap=4;html=1;dashed=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=10;" edge="1" parent="1" source="5" target="3">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="" style="edgeStyle=none;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;html=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=10;labelBackgroundColor=default;strokeColor=default;fontColor=default;fillColor=default;shadow=1;" edge="1" parent="1" source="5" target="3">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="Wegovy Experiences: Stories from users of Wegovy weight management treatment" style="shape=rectangle;fontSize=10;whiteSpace=wrap;spacing=10;fontFamily=Architects Daughter;shadow=1;hachureGap=4;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;sketch=1;curveFitting=1;jiggle=2;" parent="1" vertex="1">
+                    <mxGeometry x="-30" y="260" width="300" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" style="edgeStyle=elbowEdgeStyle;shape=arrow;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;html=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=10;strokeWidth=2;" edge="1" parent="1" source="27">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1020" y="290" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="27" value="Chat bot with RAG.&amp;nbsp;&lt;br&gt;&lt;br&gt;anwser questionstions about, drugs, dosage, book apointsments, upcomming group sessions. Fine tuned and traning on Novo Nordisk littertures and newest research.&amp;nbsp;" style="whiteSpace=wrap;html=1;shadow=1;hachureGap=4;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=10;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+                    <mxGeometry x="1140" y="220" width="120" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="Avalible on all pages" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=1;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=10;" vertex="1" parent="1">
+                    <mxGeometry x="1070" y="250" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="SITEMAP&amp;nbsp;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=1;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=34;" vertex="1" parent="1">
+                    <mxGeometry x="450" y="-80" width="60" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
